@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEG emotion detector</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="icon" href="static/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="home">
+        <h1>EEG emotion detector</h1>
+        <p>
+            Etiam vitae risus id lacus dapibus volutpat. 
+            Pellentesque tincidunt libero nulla, vitae efficitur libero semper 
+            vitae. Mauris odio dui, fringilla id molestie pretium, iaculis eget 
+            nibh. Nulla scelerisque est ex, quis luctus lacus cursus a. 
+            Sed dignissim sagittis lacus non tincidunt. 
+            Maecenas sem mi, laoreet non blandit ac, venenatis vel eros. 
+            Maecenas sagittis dictum elit eu vehicula. 
+            Proin eleifend ullamcorper sagittis. Cras dictum sagittis ullamcorper. 
+            Proin odio metus, sodales sit amet dapibus id, tempus eu lorem. 
+            Donec auctor aliquam mi, vitae venenatis dui rutrum sit amet. 
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        </p>
+        <form method="POST", action="{{url_for('predict')}}" enctype = "multipart/form-data">
+            <label for="files">Insert eeg file here:</label>
+            <input type="file" id="files" name="file"> 
+            <input type="submit" class="submit">
+        </form>
+        <h2>Your mental state is determined to be _________ by our model. </h2>
+        <h3>Your recommended spotify playlist is <a href="/www.figma.com/">here</a></h3>
+    </div>
+</body>
+</html>
