@@ -35,8 +35,10 @@
             <input type="file" id="files" name="file"> 
             <input type="submit" class="submit">
         </form>
-        <h2>Your mental state is determined to be _________ by our model. </h2>
+        {%if data != None%}
+        <h2>Your mental state is determined to be <span>{{data}}</span> by our model. </h2>
         <h3>Your recommended spotify playlist is <a href="/www.figma.com/">here</a></h3>
+        {%endif%}
     </div>
 </body>
 </html>
