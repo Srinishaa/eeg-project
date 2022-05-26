@@ -31,7 +31,7 @@ def predict():
     for p in predictions:
         print(label_unmapping.get(p))
 
-    pred = label_unmapping.get(predictions[0])
+    pred = label_unmapping.get(predictions[3])
     
     return render_template('index.html', data = pred)
 

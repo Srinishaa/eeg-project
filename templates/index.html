@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,36 +9,65 @@
     <link rel="stylesheet" href="static/styles.css">
     <link rel="icon" href="static/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="home">
         <h1>EEG emotion detector</h1>
         <p>
-            Etiam vitae risus id lacus dapibus volutpat. 
-            Pellentesque tincidunt libero nulla, vitae efficitur libero semper 
-            vitae. Mauris odio dui, fringilla id molestie pretium, iaculis eget 
-            nibh. Nulla scelerisque est ex, quis luctus lacus cursus a. 
-            Sed dignissim sagittis lacus non tincidunt. 
-            Maecenas sem mi, laoreet non blandit ac, venenatis vel eros. 
-            Maecenas sagittis dictum elit eu vehicula. 
-            Proin eleifend ullamcorper sagittis. Cras dictum sagittis ullamcorper. 
-            Proin odio metus, sodales sit amet dapibus id, tempus eu lorem. 
-            Donec auctor aliquam mi, vitae venenatis dui rutrum sit amet. 
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Currently, depression is the world’s serious health concern and economic burden worldwide. However, due to
+            the restrictions of current methods for depression diagnosis, a pervasive and objective approach is
+            significant.<br>
+            The aim of our project is to use a Machine Learning based approach to identify depression among people. We
+            will first work with a static dataset and several ML algorithms and build optimised models for depression
+            detection. We will further connect this model to a web app and use spotify music playlists to play
+            appropriate music which may be suitable for the patient's mood. Our final goal is to make the entire
+            implementation real time with the help of EEG headset and determine the patient’s mood and play suitable
+            music to pacify his depression. If the patient follows this treatment on a regular basis, we believe it can
+            impact his/her mental health in a positive manner.
         </p>
-        <form method="POST", action="{{url_for('predict')}}" enctype = "multipart/form-data">
+        <form method="POST" , action="{{url_for('predict')}}" enctype="multipart/form-data">
             <label for="files">Insert eeg file here:</label>
-            <input type="file" id="files" name="file"> 
+            <input type="file" id="files" name="file">
             <input type="submit" class="submit">
         </form>
         {%if data != None%}
         <h2>Your mental state is determined to be <span>{{data}}</span> by our model. </h2>
-        <h3>Your recommended spotify playlist is <a href="/www.figma.com/">here</a></h3>
+        {%if data == 'NEGATIVE'%}
+        <h3>Here's a playlist that will get you motivated and ready to rock the world in no time!</h3>
+        <br>
+        <div style="text-align: center;">
+            <iframe style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdxcBWuJkbcy?utm_source=generator" width="80%"
+                height="380" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </div>
+        {%endif%}
+        {%if data == 'POSITIVE'%}
+        <h3>Here's a happy playlist for a happy person like you!</h3>
+        <br>
+        <div style="text-align: center;">
+            <iframe style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/0jrlHA5UmxRxJjoykf7qRY?utm_source=generator" width="80%"
+                height="380" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </div>
+        {%endif%}
+        {%if data == 'NEUTRAL'%}
+        <h3>You are fine, but this playlist will make you feel great!</h3>
+        <br>
+        <div style="text-align: center;">
+            <iframe style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/42EL4koTAevxJ4R8IT8OHJ?utm_source=generator" width="80%"
+                height="380" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </div>
+        {%endif%}
         {%endif%}
     </div>
 </body>
